@@ -8,6 +8,8 @@ import { TopicSearchService } from '../topic-search.service';
 })
 export class TopicSearchComponent implements OnInit {
 
+  
+
   constructor(private topicSearchService: TopicSearchService) { }
 
   ngOnInit(): void {

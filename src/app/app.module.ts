@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { TopicSearchComponent } from './topic-search/topic-search/topic-search.component';
+import { NebularModule } from './nebular/nebular.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TopicSearchComponent } from './topic-search/topic-search/topic-search.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NebularModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
 export class TopicSearchPayload {
-    name: string;
+    name: string; 
     pictureURL: string;
 }
