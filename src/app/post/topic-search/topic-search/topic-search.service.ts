@@ -14,4 +14,11 @@ export class TopicSearchService {
     return this.http.get<Array<TopicSearchPayload>>('http://localhost:8080/api/v1/search/artist/' + artistQuery);
   }
 
+  getQueriedAlbum(albumQuery: string): Observable<Array<TopicSearchPayload>> {
+    return this.http.get<Array<TopicSearchPayload>>('http://localhost:8080/api/v1/search/album/' + albumQuery);
+  }
+
+  getQueriedTrack(trackQuery: string): Observable<Array<TopicSearchPayload>> {
+    return this.http.get<Array<TopicSearchPayload>>('http://localhost:8080/api/v1/search/track/' + trackQuery);
+  }
 }
