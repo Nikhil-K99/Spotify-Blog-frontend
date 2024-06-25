@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TopicSearchService } from './topic-search.service';
 import { TopicType } from 'src/app/shared/topic-type';
 import { TopicSearchPayload } from './topic-search.payload';
@@ -12,9 +12,9 @@ import { TopicSearchPayload } from './topic-search.payload';
 export class TopicSearchComponent implements OnInit {
 
   query: string = ''
-  queryType: TopicType = TopicType.ARTIST;
+  @Input() queryType: TopicType | null = null;
   searchItems: TopicSearchPayload[] = [];
-  selectedItem: TopicSearchPayload;
+  @Output() selectedItem: EventEmitter<TopicSearchPayload> = new EventEmitter<TopicSearchPayload>();
 
   constructor(private topicSearchService: TopicSearchService) { 
 
@@ -24,7 +24,8 @@ export class TopicSearchComponent implements OnInit {
   }
 
   onInputChange(): void {
-    if (this.query || this.query.replace(/\s/g,"") !== this.selectedItem.name.replace(/\s/g,"")) {
+    if (this.query) {
+      // && this.query.replace(/\s/g,"") !== this.selectedItem.name.replace(/\s/g,"")
       if (this.queryType === TopicType.ARTIST) {
         this.topicSearchService.getQueriedArtist(this.query.replace(/\s/g,""))
         .subscribe(data => {
@@ -47,11 +48,15 @@ export class TopicSearchComponent implements OnInit {
         });
       }
     }
+    else {
+      this.searchItems = [];
+    }
   }
 
   onSelectItem(item: TopicSearchPayload): void {
-    console.log('Selected Item: ', item);
+    console.log("emitting", item)
     this.query = item.name;
+    this.selectedItem.emit(item);
     this.searchItems = [];
   }
 }

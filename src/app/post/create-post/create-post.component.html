@@ -2,11 +2,17 @@
 
 <nb-card>
     <nb-card-body>
-      A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-      Originally, nebula was a name for any diffuse astronomical object,
-      including galaxies beyond the Milky Way.
+      <div *ngIf="selectedItem">
+        <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
+        {{selectedItem.name}}
+      </div>
     <div>
-        <app-topic-search></app-topic-search>
+      <nb-select [(ngModel)]='queryType'>
+        <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
+      </nb-select>
+    </div>
+    <div>
+        <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
     </div>
     </nb-card-body>
-  </nb-card>
+</nb-card>
