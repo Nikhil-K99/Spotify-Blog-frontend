@@ -19,12 +19,10 @@
     "@angular/platform-browser": "~13.4.0",
     "@angular/platform-browser-dynamic": "~13.4.0",
     "@angular/router": "~13.4.0",
-    "@nebular/eva-icons": "8.0.0",
-    "@nebular/theme": "^8.0.0",
     "eva-icons": "^1.1.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "^0.11.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.11",
