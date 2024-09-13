@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { TopicType } from 'src/app/shared/topic-type';
 import { TopicSearchPayload } from '../topic-search/topic-search/topic-search.payload';
 import { CreatePostPayload } from './create-post.payload';
@@ -15,7 +15,7 @@ export class CreatePostComponent implements OnInit {
   queryTypes = TopicType;
   selectedItem: TopicSearchPayload;
   postPayload: CreatePostPayload;
-  createPostForm: FormGroup;
+  createPostForm: UntypedFormGroup;
 
   constructor() { }
 
@@ -25,8 +25,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createPostForm = new FormGroup({
-      postName: new FormControl('', Validators.required)
+    this.createPostForm = new UntypedFormGroup({
+      postName: new UntypedFormControl('', Validators.required)
   //     description: new FormControl('', Validators.required)    
     })
   }
