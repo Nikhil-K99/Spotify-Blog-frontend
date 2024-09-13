@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TopicType } from 'src/app/shared/topic-type';
 import { TopicSearchPayload } from '../topic-search/topic-search/topic-search.payload';
+import { CreatePostPayload } from './create-post.payload';
 
 @Component({
   selector: 'app-create-post',
@@ -12,7 +14,9 @@ export class CreatePostComponent implements OnInit {
   queryType: TopicType;
   queryTypes = TopicType;
   selectedItem: TopicSearchPayload;
-  
+  postPayload: CreatePostPayload;
+  createPostForm: FormGroup;
+
   constructor() { }
 
   onSelectedItem(event: TopicSearchPayload): void {
@@ -21,6 +25,10 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createPostForm = new FormGroup({
+      postName: new FormControl('', Validators.required)
+  //     description: new FormControl('', Validators.required)    
+    })
   }
 
 }

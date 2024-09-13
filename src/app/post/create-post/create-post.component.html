@@ -6,13 +6,18 @@
         <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
         {{selectedItem.name}}
       </div>
-    <div>
-      <nb-select [(ngModel)]='queryType'>
-        <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
-      </nb-select>
-    </div>
-    <div>
-        <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
-    </div>
+      <div>
+        <nb-select [(ngModel)]='queryType'>
+          <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
+        </nb-select>
+      </div>
+      <div>
+          <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
+      </div>
+      <form [formGroup]="createPostForm">
+        <nb-form-field>
+          <input type="text" formControlName="postName" nbInput placeholder="Post Title">
+      </nb-form-field>
+      </form>
     </nb-card-body>
 </nb-card>

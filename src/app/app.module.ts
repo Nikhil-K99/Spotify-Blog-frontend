@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { TopicSearchComponent } from './post/topic-search/topic-search/topic-search.component';
 import { NebularModule } from './nebular/nebular.module';
 import { CreatePostComponent } from './post/create-post/create-post.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     NebularModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

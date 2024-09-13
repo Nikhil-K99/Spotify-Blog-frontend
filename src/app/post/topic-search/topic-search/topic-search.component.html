@@ -4,8 +4,10 @@
         <input type="text" nbInput placeholder="Search for {{queryType}}" shape="round" [(ngModel)]="query" (ngModelChange)="onInputChange()">
     </nb-form-field>
 
+    <div *ngIf="query">
         <nb-option  *ngFor="let item of searchItems" [value]="item" (click)="onSelectItem(item)">
                 <img [src]="item.pictureURL" alt="{{item.name}}" class="item-image">
                 {{item.name}}
         </nb-option>
+    </div>
 </ng-container>
