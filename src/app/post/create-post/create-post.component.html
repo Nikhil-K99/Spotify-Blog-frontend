@@ -1,5 +1,4 @@
 <p>create-post works!</p>
-
 <nb-card>
     <nb-card-body>
       <div *ngIf="selectedItem">
@@ -7,17 +6,20 @@
         {{selectedItem.name}}
       </div>
       <div>
-        <nb-select [(ngModel)]='queryType'>
+        <nb-select [(ngModel)]='queryType' placeholder="Select topic type">
           <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
         </nb-select>
       </div>
       <div>
           <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
       </div>
-      <form [formGroup]="createPostForm">
+      <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
         <nb-form-field>
-          <input type="text" formControlName="postName" nbInput placeholder="Post Title">
-      </nb-form-field>
+          <input type="text" formControlName="postName" nbInput placeholder="Title your post">
+        </nb-form-field>
+        <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+        <button (click)="discardPost()" nbButton status="danger">Discard</button>
+        <button type="submit" nbButton status="success">Post</button>
       </form>
     </nb-card-body>
 </nb-card>

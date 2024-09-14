@@ -10,7 +10,7 @@ import { TopicSearchComponent } from './post/topic-search/topic-search/topic-sea
 import { NebularModule } from './nebular/nebular.module';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
-import { EditorModule } from '@tinymce/tinymce-angular';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     NebularModule,
     ReactiveFormsModule,
     FormsModule,
-    EditorModule
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
