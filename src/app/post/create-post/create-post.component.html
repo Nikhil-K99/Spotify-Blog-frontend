@@ -10,17 +10,28 @@
           <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
         </nb-select>
       </div>
-      <div>
-          <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
+      
+      <div class="topic-search">
+        <div>
+            <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
+        </div>
+        <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched" class="alert alert-danger">Topic is required</div>
       </div>
-      <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched" class="alert alert-danger">Topic is required</div>
+      
       <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+       
+        <div class="postName">
         <nb-form-field>
           <input type="text" formControlName="postName" nbInput placeholder="Title your post">
         </nb-form-field>
-        <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched" class="alert alert-danger">Post Title is required</div>
+        <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched" class="alert">Post Title is required</div>
+        </div>
+
+        <div class="description">
         <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
-        <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched" class="alert alert-danger">Description is required</div>
+        <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched" class="alert">Description is required</div>
+      </div>
+        
         <button (click)="discardPost()" nbButton status="danger">Discard</button>
         <button type="submit" nbButton status="success">Post</button>
       </form>
