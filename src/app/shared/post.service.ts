@@ -11,6 +11,6 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   createPost(postPayload: CreatePostPayload): Observable<any> {
-    return this.http.post('http://localhost:8080/api/v1/posts/', postPayload);
+    return this.http.post('http://localhost:8080/api/v1/posts', postPayload);
   }
 }

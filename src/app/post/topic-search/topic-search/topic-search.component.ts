@@ -54,7 +54,7 @@ export class TopicSearchComponent implements OnInit {
   }
 
   onSelectItem(item: TopicSearchPayload): void {
-    console.log("emitting", item)
+    console.log("child emitting", item)
     this.query = item.name;
     this.selectedItem.emit(item);
     this.searchItems = [];

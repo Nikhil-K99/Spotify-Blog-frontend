@@ -71,26 +71,37 @@ export class CreatePostComponent implements OnInit {
   onSelectedItem(event: TopicSearchPayload): void {
     console.log('Parent received selected Item: ', event);
     this.selectedItem = event
+    this.createPostForm.patchValue({
+      spotifyId: this.selectedItem.spotifyId
+    });
   }
 
   ngOnInit(): void {
     this.createPostForm = new FormGroup({
       postName: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)    
+      description: new FormControl('', Validators.required),
+      spotifyId: new FormControl('', Validators.required)   
     })
   }
 
   createPost(): void  {
+    if (this.createPostForm.invalid) {
+      this.createPostForm.markAllAsTouched();
+      return;
+    }
     this.postPayload.postName = this.createPostForm.get('postName')!.value;
-    this.postPayload.description = this.createPostForm.get('description')!.value
-    this.postPayload.topicType = this.queryType;
-    this.postPayload.topicSpotifyId = this.selectedItem.spotifyId;
+    this.postPayload.description = this.createPostForm.get('description')!.value;
+    this.postPayload.topicSpotifyId = this.createPostForm.get('spotifyId')!.value;
+    this.postPayload.topicType = this.queryType.toUpperCase() as TopicType;
 
-    // this.postService.createPost(this.postPayload).subscribe((data) => {
-    //   this.router.navigateByUrl('home');
-    // }, error => {
-    //   throwError(error);
-    // })
+    console.log(this.queryType)
+    
+
+    this.postService.createPost(this.postPayload).subscribe((data) => {
+      this.router.navigateByUrl('home');
+    }, error => {
+      throwError(error);
+    })
     console.log("Post created")
   }
 
