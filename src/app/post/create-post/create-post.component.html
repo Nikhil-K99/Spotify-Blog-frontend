@@ -1,39 +1,61 @@
-<p>create-post works!</p>
-<nb-card>
-    <nb-card-body>
-      <div *ngIf="selectedItem">
-        <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
-        {{selectedItem.name}}
-      </div>
-      <div>
-        <nb-select [(ngModel)]='queryType' placeholder="Select topic type">
-          <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
-        </nb-select>
-      </div>
-      
-      <div class="topic-search">
-        <div>
-            <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
-        </div>
-        <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched" class="alert alert-danger">Topic is required</div>
-      </div>
-      
-      <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
-       
-        <div class="postName">
-        <nb-form-field>
-          <input type="text" formControlName="postName" nbInput placeholder="Title your post">
-        </nb-form-field>
-        <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched" class="alert">Post Title is required</div>
-        </div>
-
-        <div class="description">
-        <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
-        <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched" class="alert">Description is required</div>
-      </div>
+<div class="card-container">
+  <nb-card class="create-post-card">
+      <nb-card-body>
         
-        <button (click)="discardPost()" nbButton status="danger">Discard</button>
-        <button type="submit" nbButton status="success">Post</button>
-      </form>
-    </nb-card-body>
-</nb-card>
+        <div class="card-content-container">
+      
+            <div class="topic-container">
+             
+              <ng-template #defaultContent>
+                <div class="black-square"></div>
+                <p>No item selected</p>
+              </ng-template>
+              <div *ngIf="selectedItem; else defaultContent" class="selected-item">
+                <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
+                <p>{{selectedItem.name}}</p>
+              </div>
+              
+
+
+                      
+              <div>
+                <nb-select [(ngModel)]='queryType' placeholder="Select topic type">
+                  <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
+                </nb-select>
+              </div>
+            
+
+            <div class="topic-search">
+                
+              <div>
+                  <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
+              </div>
+            
+              <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched" class="alert alert-danger">Topic is required</div>
+            </div>
+          </div>
+          
+          
+          <div class="form-container">
+            <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+            
+              <div class="postName">
+              <nb-form-field>
+                <input type="text" formControlName="postName" nbInput fullWidth placeholder="Title your post">
+              </nb-form-field>
+              <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched" class="alert">Post Title is required</div>
+              </div>
+
+              <div class="description">
+              <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+              <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched" class="alert">Description is required</div>
+            </div>
+              
+              <button (click)="discardPost()" nbButton status="danger">Discard</button>
+              <button type="submit" nbButton status="success">Post</button>
+            </form>
+          </div>
+      </div>
+      </nb-card-body>
+  </nb-card>
+</div>

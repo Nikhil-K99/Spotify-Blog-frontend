@@ -1,7 +1,6 @@
-<ng-container *ngIf='queryType != null'>
     <nb-form-field>
         <nb-icon nbPrefix icon="search"></nb-icon>
-        <input type="text" nbInput placeholder="Search for {{queryType}}" shape="round" [(ngModel)]="query" (ngModelChange)="onInputChange()">
+        <input type="text" [disabled]="!queryType" nbInput [placeholder]="queryType ? 'Search for ' + queryType : 'Search for topic'" shape="round" [(ngModel)]="query" (ngModelChange)="onInputChange()">
     </nb-form-field>
 
     <div *ngIf="query">
@@ -10,4 +9,3 @@
                 {{item.name}}
         </nb-option>
     </div>
-</ng-container>
