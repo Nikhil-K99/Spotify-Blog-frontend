@@ -1,60 +1,70 @@
-<div class="card-container">
-  <nb-card class="create-post-card">
-      <nb-card-body>
-        <p class="create-post-label">Create Post</p>
-        <div class="card-content-container">
-            
-            <div class="topic-container">
+<div class='card-wrapper'>
+  <!-- <div class="post-card-header">
+    <p class="create-post-label">Create Post</p>
+  </div> -->
+  <div class="card-container">
+    <div class="post-card-header">
+      <p class="create-post-label">Create Post</p>
+    </div>
+    <nb-card class="create-post-card">
+        <nb-card-body>
+          <!-- <p class="create-post-label">Create Post</p> -->
+          <div class="card-content-container">
               
-              <div class="selected-container">
-                <div *ngIf="!selectedItem" class="black-square"></div>
-                <p *ngIf="!selectedItem" >No item selected</p>
+              <div class="topic-container">
                 
-                <img *ngIf="selectedItem" [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
-                  <p *ngIf="selectedItem">{{selectedItem.name}}</p>
-              </div>
-              
-
-
-                      
-              <div>
-                <nb-select fullWidth [(ngModel)]='queryType' placeholder="Select topic type">
-                  <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
-                </nb-select>
-              </div>
-            
-
-            <div class="topic-search">
+                <div class="selected-container">
+                  
+                  <img *ngIf="!selectedItem" src="https://i.scdn.co/image/ab67616d0000b273cad190f1a73c024e5a40dddd"  class="black-square">
+                  <p *ngIf="!selectedItem" >No item selected</p>
+                  
+                  <img *ngIf="selectedItem" [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
+                    <p *ngIf="selectedItem">{{selectedItem.name}}</p>
+                </div>
                 
-              <div>
-                  <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
-              </div>
-            
-              <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched" class="alert alert-danger">Topic is required</div>
-            </div>
-          </div>
-          
-          
-          <div class="form-container">
-            <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
-            
-              <div class="postName">
-              <nb-form-field>
-                <input type="text" formControlName="postName" nbInput fullWidth placeholder="Title your post">
-              </nb-form-field>
-              <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched" class="alert">Post Title is required</div>
-              </div>
 
-              <div class="description">
-              <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
-              <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched" class="alert">Description is required</div>
-            </div>
+
+                        
+                <div class="queryType-select">
+                  <nb-select fullWidth [(ngModel)]='queryType' placeholder="Select topic type">
+                    <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
+                  </nb-select>
+                </div>
               
-              <button (click)="discardPost()" nbButton status="danger">Discard</button>
-              <button type="submit" nbButton status="success">Post</button>
-            </form>
-          </div>
-      </div>
-      </nb-card-body>
-  </nb-card>
+
+              <div class="topic-search">
+                  
+                <div>
+                    <app-topic-search [queryType]="queryType" (selectedItem)="onSelectedItem($event)"></app-topic-search>
+                </div>
+              
+                <div *ngIf="createPostForm.get('spotifyId')?.invalid && createPostForm.get('spotifyId')?.touched && hasSubmitted" class="alert alert-danger">Topic is required</div>
+              </div>
+            </div>
+            
+            
+            <div class="form-container">
+              <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+              
+                <div class="postName">
+                <nb-form-field>
+                  <input type="text" formControlName="postName" nbInput fullWidth placeholder="Title your post">
+                </nb-form-field>
+                <div *ngIf="createPostForm.get('postName')?.invalid && createPostForm.get('postName')?.touched && hasSubmitted" class="alert">Post Title is required</div>
+                </div>
+
+                <div class="description">
+                <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+                <div *ngIf="createPostForm.get('description')?.invalid && createPostForm.get('description')?.touched && hasSubmitted" class="alert">Description is required</div>
+                </div>
+                <div class="btn-container">
+                  <button (click)="discardPost()" nbButton status="danger">Discard</button>
+                  <button type="submit" nbButton status="success">Post</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        </nb-card-body>
+    </nb-card>
+  </div>
 </div>

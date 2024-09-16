@@ -20,6 +20,7 @@ export class CreatePostComponent implements OnInit {
   selectedItem: TopicSearchPayload;
   postPayload: CreatePostPayload;
   createPostForm: FormGroup;
+  hasSubmitted: boolean = false;
   
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -86,6 +87,8 @@ export class CreatePostComponent implements OnInit {
 
   createPost(): void  {
     if (this.createPostForm.invalid) {
+      this.hasSubmitted = true;
+      console.log(this.hasSubmitted);
       this.createPostForm.markAllAsTouched();
       return;
     }
@@ -94,7 +97,6 @@ export class CreatePostComponent implements OnInit {
     this.postPayload.topicSpotifyId = this.createPostForm.get('spotifyId')!.value;
     this.postPayload.topicType = this.queryType.toUpperCase() as TopicType;
 
-    console.log(this.queryType)
     
 
     this.postService.createPost(this.postPayload).subscribe((data) => {
