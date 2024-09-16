@@ -3,14 +3,14 @@
       <nb-card-body>
         
         <div class="card-content-container">
-      
+          
             <div class="topic-container">
-             
-              <ng-template #defaultContent>
-                <div class="black-square"></div>
-                <p>No item selected</p>
-              </ng-template>
-              <div *ngIf="selectedItem; else defaultContent" class="selected-item">
+              
+              
+                <div *ngIf="!selectedItem" class="black-square"></div>
+                <p *ngIf="!selectedItem" >No item selected</p>
+              
+              <div *ngIf="selectedItem" class="selected-item">
                 <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
                 <p>{{selectedItem.name}}</p>
               </div>

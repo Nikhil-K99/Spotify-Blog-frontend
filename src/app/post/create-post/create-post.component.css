@@ -20,13 +20,6 @@
     text-align: center;
 }
 
-::ng-deep .black-square-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;  
-    text-align: center;
-}
 
 
 .SelectedItem-image {
