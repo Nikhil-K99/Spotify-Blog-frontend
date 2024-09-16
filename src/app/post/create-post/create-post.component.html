@@ -1,25 +1,24 @@
 <div class="card-container">
   <nb-card class="create-post-card">
       <nb-card-body>
-        
+        <p class="create-post-label">Create Post</p>
         <div class="card-content-container">
-          
+            
             <div class="topic-container">
               
-              
+              <div class="selected-container">
                 <div *ngIf="!selectedItem" class="black-square"></div>
                 <p *ngIf="!selectedItem" >No item selected</p>
-              
-              <div *ngIf="selectedItem" class="selected-item">
-                <img [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
-                <p>{{selectedItem.name}}</p>
+                
+                <img *ngIf="selectedItem" [src]="selectedItem.pictureURL" alt="{{selectedItem.name}}" class="SelectedItem-image">
+                  <p *ngIf="selectedItem">{{selectedItem.name}}</p>
               </div>
               
 
 
                       
               <div>
-                <nb-select [(ngModel)]='queryType' placeholder="Select topic type">
+                <nb-select fullWidth [(ngModel)]='queryType' placeholder="Select topic type">
                   <nb-option *ngFor='let type of queryTypes | keyvalue' [value]="type.value">{{ type.value }}</nb-option>
                 </nb-select>
               </div>
