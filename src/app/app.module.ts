@@ -11,6 +11,7 @@ import { NebularModule } from './nebular/nebular.module';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { PostTileComponent } from './src/app/shared/post-tile/post-tile/post-tile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     LoginComponent,
     HomeComponent,
     TopicSearchComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostTileComponent
   ],
   imports: [
     BrowserModule,

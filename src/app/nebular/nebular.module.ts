@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbMenuModule, NbOptionModule, NbSearchModule, NbSelectComponent, NbSelectModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbMenuModule, NbOptionModule, NbSearchModule, NbSelectComponent, NbSelectModule, NbSidebarModule } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -15,7 +15,8 @@ const NebularComponents = [
   NbFormFieldModule,
   NbButtonModule,
   NbOptionModule,
-  NbSelectModule
+  NbSelectModule,
+  NbSidebarModule.forRoot()
 ];
 
 @NgModule({
