@@ -6,15 +6,52 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1em;
 }
 
 .card-content-container {
     flex: 3;
+    display: flex;
+    flex-direction: column;
+    min-height: 1em;
+    height: auto;
+    max-height: 40vh;
+    /* overflow: hidden; */
+    /* position: relative; */
 }
 
-.post-title{
+.post-title {
     font-size: 2em;
     font-weight: bold;
     opacity: 1;
+    padding-bottom: 0.1em;
+}
 
+.description-container {
+    flex-grow: 1; /* Allow this to grow and fill available space */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    border: none; /* Remove border */
+    margin-bottom: 0.5em; /* Remove margins */
+    margin-top: 0.5em;
+    padding: 0; /* Remove padding */
+}
+
+
+.description {
+    /* flex-grow: 1;  */
+    /* overflow-y: auto; */
+    max-height: 100%;
+}
+
+.topic-picture {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    padding-bottom: 1em;
+}
+
+.comments {
+    margin-top: auto;
 }

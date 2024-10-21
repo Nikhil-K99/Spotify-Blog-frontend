@@ -20,10 +20,20 @@
                 </div>
                 <div class='card-content-container'>
                     <div class='post-title'>{{post.postName}}</div>
-                    <span class='username'>Posted by {{post.username}} </span>
-                    <span class='duration' >{{post.duration}}</span>
                     <div>
-                        <p class="post-text" [innerHtml]="post.description"></p>
+                        <span class='username'>Posted by {{post.username}} </span>
+                        <span class='duration' >{{post.duration}}</span>
+                    </div>
+                    <nb-card class='description-container'>
+                        <div class='description'>
+                            <p class="post-text" [innerHtml]="post.description"></p>
+                        </div>
+                    </nb-card>
+                    <div class='comments'>
+                        <a class="btnCommments" role="button">
+                            <fa-icon [icon]="faComments"></fa-icon>
+                            Comments({{post.commentCount}})
+                        </a>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { PostTileComponent } from './shared/post-tile/post-tile.component';
 import { TopicComponent } from './shared/topic/topic.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { VoteComponent } from './shared/vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TopicSearchComponent,
     CreatePostComponent,
     PostTileComponent,
-    TopicComponent
+    TopicComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
