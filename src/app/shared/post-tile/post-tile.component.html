@@ -1,1 +1,32 @@
 <p>post-tile works!</p>
+<div class="row post" *ngFor="let post of posts">
+    <nb-card>
+        <nb-card-body>
+            <div class='card-container'>
+                <div class='topic-container'>
+                    <img class='topic-picture' [src]="post.topicData.pictureUrl">
+                    <div *ngIf='post.topicData.albumName'>
+                        <fa-icon [icon]="faCompactDisc"></fa-icon>
+                        <span> {{post.topicData.albumName}}</span>
+                    </div>
+                    <div *ngIf='post.topicData.trackName'>
+                        <fa-icon [icon]="faMusic"></fa-icon>
+                        <span> {{post.topicData.trackName}}</span>
+                    </div>
+                    <div>
+                        <fa-icon [icon]="faUser"></fa-icon>
+                        <span> {{post.topicData.artistName}}</span>
+                    </div>
+                </div>
+                <div class='card-content-container'>
+                    <div class='post-title'>{{post.postName}}</div>
+                    <span class='username'>Posted by {{post.username}} </span>
+                    <span class='duration' >{{post.duration}}</span>
+                    <div>
+                        <p class="post-text" [innerHtml]="post.description"></p>
+                    </div>
+                </div>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>

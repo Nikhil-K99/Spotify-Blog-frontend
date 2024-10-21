@@ -11,7 +11,9 @@ import { NebularModule } from './nebular/nebular.module';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { PostTileComponent } from './src/app/shared/post-tile/post-tile/post-tile.component';
+import { PostTileComponent } from './shared/post-tile/post-tile.component';
+import { TopicComponent } from './shared/topic/topic.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { PostTileComponent } from './src/app/shared/post-tile/post-tile/post-til
     HomeComponent,
     TopicSearchComponent,
     CreatePostComponent,
-    PostTileComponent
+    PostTileComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { PostTileComponent } from './src/app/shared/post-tile/post-tile/post-til
     NebularModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

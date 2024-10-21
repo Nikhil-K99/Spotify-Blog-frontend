@@ -1,16 +1,18 @@
 import { TopicType } from "./topic-type"
+import { TopicPayload } from "./topic.payload";
+
 
 export class PostModel {
     postId: number;
     postName: string;
     description: string;
-    topictype: TopicType;
+    topicType: TopicType;
     topicId: number;
     username: string;
     voteCount: number;
     commentCount: number;
     duration: string;
     upVote: boolean;
-    downVote: boolean
-
+    downVote: boolean;
+    topicData: TopicPayload;
 }
