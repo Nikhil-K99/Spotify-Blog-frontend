@@ -1,1 +1,10 @@
-<p>vote works!</p>
+
+    <div class='votebox'>
+        <div class='upvote-container'>
+            <fa-icon (click)="upvotePost()" class="upvote" [icon]="faArrowUp" [style.color]="post.upVote ? 'green':''"></fa-icon>
+        </div>
+        <div>{{post.voteCount}}</div>
+        <div class='downvote-container'>
+            <fa-icon (click)="downvotePost()" class="downvote" [icon]="faArrowDown" [style.color]="post.downVote ? 'red':''"></fa-icon>
+        </div>
+    </div>

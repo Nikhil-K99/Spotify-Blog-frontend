@@ -22,27 +22,5 @@ export class HomeComponent implements OnInit {
     })
     
   }
-
-  // getArtist(topicId: number): void {
-  //   this.topicService.getArtist(topicId).subscribe(artist => {
-  //     this.artist = artist;
-  //     console.log(this.artist);
-  //   })
-  // }
-
-  // getAlbum(topicId: number): void {
-  //   this.topicService.getAlbum(topicId).subscribe(album => {
-  //     this.album = album;
-  //     console.log(this.album);
-  //   })
-  // }
-
-  // getTrack(topicId: number): void {
-  //   this.topicService.getTrack(topicId).subscribe(track => {
-  //     this.track = track;
-  //     console.log(this.track);
-  //   })
-  // }
-
  
 }
