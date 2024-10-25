@@ -20,34 +20,63 @@ export class VoteComponent implements OnInit {
   faArrowDown = faArrowDown;
   upvoteColor: string;
   downvoteColor: string;
+  currentStatus: VoteType;
 
   constructor(private voteService: VoteService, private postService: PostService) { 
 
     this.votePayload = {
       voteType: undefined,
       postId: undefined
-    }
+    };
+    // this.currentStatus = VoteType.NOVOTE;
   }
 
   ngOnInit(): void {
+    // console.log("before init", this.currentStatus)
     this.updateVoteDetails();
+    // console.log("after init", this.currentStatus)
   }
 
   upvotePost() {
-    this.votePayload.voteType = VoteType.UPVOTE;
-    this.vote();
-    this.downvoteColor = '';
+    if (this.currentStatus == VoteType.UPVOTE) {
+      this.votePayload.voteType = VoteType.NOVOTE;
+      this.vote();
+      this.upvoteColor = ''
+
+    } else {
+      this.votePayload.voteType = VoteType.UPVOTE;
+      this.vote();
+      this.downvoteColor = '';
+    }
+    
   }
 
   downvotePost() {
-    this.votePayload.voteType = VoteType.DOWNVOTE;
-    this.vote();
-    this.upvoteColor = '';
+    if (this.currentStatus == VoteType.DOWNVOTE) {
+      this.votePayload.voteType = VoteType.NOVOTE;
+      this.vote();
+      this.downvoteColor = ''
+    } else {
+      this.votePayload.voteType = VoteType.DOWNVOTE;
+      this.vote();
+      this.upvoteColor = '';
+    }
+    
   }
 
   private updateVoteDetails() {
     this.postService.getPost(this.post.postId).subscribe(post => {
       this.post = post;
+      if (post.upVote) {
+        this.currentStatus = VoteType.UPVOTE;
+      }
+      else if (post.downVote) {
+        this.currentStatus = VoteType.DOWNVOTE;
+      }
+      else {
+        this.currentStatus = VoteType.NOVOTE;
+      }
+      console.log("after init", this.currentStatus);
     });
   }
 
